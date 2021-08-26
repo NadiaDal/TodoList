@@ -1,27 +1,10 @@
-import {CaseReducer, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {TodoItem} from '../types/todo';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TodoItem } from "../types/todo";
 
-export type TodoModalState = {
+interface TodoModalState {
   selectedEntity: TodoItem | null;
   isModalVisible: boolean;
-};
-
-export type TodoModalSliceState = {
-  todoModal: TodoModalState;
-};
-
-const open: CaseReducer<TodoModalState, PayloadAction<TodoItem | null>> = (
-  state,
-  action,
-) => {
-  state.isModalVisible = true;
-  state.selectedEntity = action.payload;
-};
-
-const close: CaseReducer<TodoModalState> = state => {
-  state.isModalVisible = false;
-  state.selectedEntity = null;
-};
+}
 
 export const initTodoModalState: TodoModalState = {
   selectedEntity: null,
@@ -29,12 +12,21 @@ export const initTodoModalState: TodoModalState = {
 };
 
 export const todoModalSlice = createSlice({
-  name: 'todoModal',
+  name: "todoModal",
   initialState: initTodoModalState,
   reducers: {
-    open,
-    close,
-  },
+    openModal: (
+      state,
+      action: PayloadAction<TodoItem | null>
+    ) => {
+      state.isModalVisible = true;
+      state.selectedEntity = action.payload;
+    },
+    closeModal: (state) => {
+      state.isModalVisible = false;
+      state.selectedEntity = null;
+    }
+  }
 });
 
-export const {open: openModal, close: closeModal} = todoModalSlice.actions;
+export const { openModal, closeModal } = todoModalSlice.actions;

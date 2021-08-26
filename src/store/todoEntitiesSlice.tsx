@@ -1,21 +1,9 @@
-import {CaseReducer, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {TodoItem, UUID} from '../types/todo';
 
-export type TodoEntitiesState = {
+export interface TodoEntitiesState {
   entities: Record<UUID, TodoItem>;
-};
-
-export type TodoEntitiesSliceState = {
-  todos: TodoEntitiesState;
-};
-
-const addTodoItem: CaseReducer<TodoEntitiesState, PayloadAction<TodoItem>> = (
-  state,
-  action,
-) => {
-  const todo = action.payload;
-  state.entities[todo.id] = action.payload;
-};
+}
 
 const initialState: TodoEntitiesState = {
   entities: {},
@@ -25,8 +13,18 @@ export const todoEntitiesSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTodoItem,
+    toggleComplete: (state, action: PayloadAction<UUID>) => {
+      const todo = state.entities[action.payload];
+      todo.completed = !todo.completed;
+    },
+    addTodoItem: (
+      state,
+      action: PayloadAction<TodoItem>,
+    ) => {
+      const todo = action.payload;
+      state.entities[todo.id] = action.payload;
+    }
   },
 });
 
-export const todoActions = todoEntitiesSlice.actions;
+export const { addTodoItem, toggleComplete } = todoEntitiesSlice.actions;

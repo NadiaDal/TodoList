@@ -12,4 +12,5 @@ export interface TodoItem {
   description: string;
   priority: TodoPriority;
   completed: boolean;
+  createdAt: number;
 }
