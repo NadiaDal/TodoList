@@ -3,7 +3,7 @@ import Modal from 'react-native-modal';
 import {StyleSheet} from 'react-native';
 import 'react-native-get-random-values';
 import NoteForm from './TodoForm';
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import {useAppSelector, useAppDispatch} from '../../store/hooks';
 import {closeModal} from '../../store/todoModalSlice';
 
 const TodoModal = () => {
@@ -18,8 +18,7 @@ const TodoModal = () => {
       onSwipeComplete={() => dispatch(closeModal())}
       useNativeDriverForBackdrop
       swipeDirection={['down']}
-      style={styles.container}
-    >
+      style={styles.container}>
       <NoteForm />
     </Modal>
   );
@@ -29,6 +28,6 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-end',
     margin: 0,
-  }
+  },
 });
 export default TodoModal;

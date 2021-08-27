@@ -4,7 +4,7 @@ export enum Colors {
   orange = '#fdb004',
   green = '#5eba7d',
   white = 'white',
-  grey = '#9ea7ad'
+  grey = '#9ea7ad',
 }
 
 export enum Priority {

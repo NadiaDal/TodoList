@@ -9,7 +9,7 @@ export enum TodoPriority {
 export interface TodoItem {
   id: UUID;
   name: string;
-  description: string;
+  description?: string;
   priority: TodoPriority;
   completed: boolean;
   createdAt: number;

@@ -1,32 +1,31 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TodoItem } from "../types/todo";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {TodoItem} from '../types/todo';
 
 interface TodoModalState {
   selectedEntity: TodoItem | null;
   isModalVisible: boolean;
 }
 
-export const initTodoModalState: TodoModalState = {
+export const initialState: TodoModalState = {
   selectedEntity: null,
   isModalVisible: false,
 };
 
 export const todoModalSlice = createSlice({
-  name: "todoModal",
-  initialState: initTodoModalState,
+  name: 'todoModal',
+  initialState,
   reducers: {
-    openModal: (
-      state,
-      action: PayloadAction<TodoItem | undefined>
-    ) => {
+    openModal: (state, action: PayloadAction<TodoItem | undefined>) => {
       state.isModalVisible = true;
       state.selectedEntity = action.payload ?? null;
     },
-    closeModal: (state) => {
+    closeModal: state => {
       state.isModalVisible = false;
       state.selectedEntity = null;
-    }
-  }
+    },
+  },
 });
 
-export const { openModal, closeModal } = todoModalSlice.actions;
+export const {openModal, closeModal} = todoModalSlice.actions;
+
+export default todoModalSlice.reducer;

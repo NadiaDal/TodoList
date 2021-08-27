@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { TodoEntities } from "../types/todo";
+import {TodoEntities} from '../types/todo';
 
 export const getFromStorage = async (): Promise<TodoEntities | null> => {
   let entities = null;
@@ -12,13 +12,13 @@ export const getFromStorage = async (): Promise<TodoEntities | null> => {
     console.error(error);
   }
   return entities;
-}
+};
 
 export const saveToStorage = async (entities: TodoEntities) => {
   try {
-   await AsyncStorage.setItem('entities', JSON.stringify(entities));
+    await AsyncStorage.setItem('entities', JSON.stringify(entities));
   } catch (error) {
     // TODO add logger
     console.error(error);
   }
-}
+};

@@ -1,25 +1,17 @@
 import React, {useState, useCallback} from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 import {addTodoItem} from '../../store/todoEntitiesSlice';
 import SizedBox from '../../componets/SizedBox';
 import Priorities from '../../componets/Priorities';
 import {TodoItem, TodoPriority} from '../../types/todo';
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import {useAppSelector, useAppDispatch} from '../../store/hooks';
 
 type TodoFormItem = Pick<TodoItem, 'name' | 'description' | 'priority'>;
 
 const TodoForm = () => {
-  const initState = useAppSelector(
-    state => state.todoModal.selectedEntity,
-  );
+  const initState = useAppSelector(state => state.todoModal.selectedEntity);
 
   const [todo, updateTodo] = useState<TodoFormItem>({
     name: initState?.name ?? '',
@@ -47,7 +39,7 @@ const TodoForm = () => {
       }),
     );
     clean();
-  }, [initState, todo]);
+  }, [clean, dispatch, initState, todo]);
 
   return (
     <View style={styles.content}>
@@ -70,7 +62,10 @@ const TodoForm = () => {
       />
       <SizedBox height={16} />
       <Text>Select priority</Text>
-      <Priorities selected={todo.priority} onSelect={priority => updateTodo({...todo, priority})} />
+      <Priorities
+        selected={todo.priority}
+        onSelect={priority => updateTodo({...todo, priority})}
+      />
       <SizedBox height={16} />
       <Button
         title={initState !== null ? 'Save' : 'Create'}
