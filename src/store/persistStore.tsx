@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { TodoItem, UUID } from "../types/todo";
+import { TodoEntities } from "../types/todo";
 
-export const getFromStorage = async (): Promise<Record<UUID, TodoItem> | null> => {
+export const getFromStorage = async (): Promise<TodoEntities | null> => {
   let entities = null;
 
   try {
@@ -14,7 +14,7 @@ export const getFromStorage = async (): Promise<Record<UUID, TodoItem> | null> =
   return entities;
 }
 
-export const saveToStorage = async (entities: Record<UUID, TodoItem>) => {
+export const saveToStorage = async (entities: TodoEntities) => {
   try {
    await AsyncStorage.setItem('entities', JSON.stringify(entities));
   } catch (error) {

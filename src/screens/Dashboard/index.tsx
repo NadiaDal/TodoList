@@ -12,10 +12,12 @@ import TodoModal from "./TodoModal";
 import TodoCard from "../../componets/TodoCard";
 import { Colors } from "../../theme/colors";
 import { backgroundDashboardImage } from "../../theme/images";
+import { prepareTodosList, sortTodoList } from "../../helpers/todosHelper";
+
 
 const Dashboard = () => {
   const todos = useAppSelector(state =>
-    Object.values(state.todos.entities)
+    sortTodoList(prepareTodosList(state.todos.entities))
   );
 
   const dispatch = useAppDispatch();

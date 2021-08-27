@@ -14,3 +14,5 @@ export interface TodoItem {
   completed: boolean;
   createdAt: number;
 }
+
+export type TodoEntities = Record<UUID, TodoItem>;

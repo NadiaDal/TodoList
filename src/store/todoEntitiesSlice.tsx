@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { TodoItem, UUID } from "../types/todo";
+import { TodoEntities, TodoItem, UUID } from "../types/todo";
 import { getFromStorage } from "./persistStore";
 
 export interface TodoEntitiesState {
   isLoading: boolean;
-  entities: Record<UUID, TodoItem>;
+  entities: TodoEntities;
 }
 
 const initialState: TodoEntitiesState = {
@@ -37,7 +37,7 @@ export const todoEntitiesSlice = createSlice({
       })
       .addCase(loadTodoEntities.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.entities = action.payload as Record<UUID, TodoItem>;
+        state.entities = action.payload as TodoEntities;
       });
   }
 });
