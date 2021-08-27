@@ -26,7 +26,7 @@ const TodoCard: React.FC<TodoCardProps> = ({
         containerStyle={{...styles.container, opacity: cardOpacity}}>
         <View style={styles.checkContainer}>
           <CheckBox
-            containerStyle={styles.checkox}
+            containerStyle={styles.checkbox}
             checkedColor={Colors.green}
             uncheckedColor={Colors.green}
             checked={item.completed}
@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
-  checkox: {
-    padding: 0,
+  checkbox: {
+    paddingLeft: 0,
   },
 });
 

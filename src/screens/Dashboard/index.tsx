@@ -5,11 +5,11 @@ import {openModal} from '../../store/todoModalSlice';
 import {toggleComplete} from '../../store/todoEntitiesSlice';
 import {useAppSelector, useAppDispatch} from '../../store/hooks';
 import TodoModal from './TodoModal';
-import TodoCard from '../../componets/TodoCard';
+import TodoCard from '../../components/TodoCard';
 import {Colors} from '../../theme/colors';
 import {backgroundDashboardImage} from '../../theme/images';
 import {prepareTodosList, sortTodoList} from '../../helpers/todosHelper';
-import SizedBox from '../../componets/SizedBox';
+import SizedBox from '../../components/SizedBox';
 
 const Dashboard = () => {
   const [showComplete, toggleShowCompleted] = useState(false);

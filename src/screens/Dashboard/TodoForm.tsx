@@ -3,8 +3,8 @@ import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 import {addTodoItem} from '../../store/todoEntitiesSlice';
-import SizedBox from '../../componets/SizedBox';
-import Priorities from '../../componets/Priorities';
+import SizedBox from '../../components/SizedBox';
+import Priorities from '../../components/Priorities';
 import {TodoItem, TodoPriority} from '../../types/todo';
 import {useAppSelector, useAppDispatch} from '../../store/hooks';
 
