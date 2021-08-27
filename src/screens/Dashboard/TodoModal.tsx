@@ -18,7 +18,8 @@ const TodoModal = () => {
       onSwipeComplete={() => dispatch(closeModal())}
       useNativeDriverForBackdrop
       swipeDirection={['down']}
-      style={styles.container}>
+      style={styles.container}
+    >
       <NoteForm />
     </Modal>
   );

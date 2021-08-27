@@ -13,6 +13,7 @@ const priorities = {
 export const sortTodoList = (list: TodoItem[]) => {
   return list.sort(
     (todoA, todoB) =>
+      (+todoA.completed - +todoB.completed) ||
       priorities[todoA.priority] - priorities[todoB.priority]
       || todoA.createdAt - todoB.createdAt
   );
