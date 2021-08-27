@@ -17,10 +17,10 @@ export const todoModalSlice = createSlice({
   reducers: {
     openModal: (
       state,
-      action: PayloadAction<TodoItem | null>
+      action: PayloadAction<TodoItem | undefined>
     ) => {
       state.isModalVisible = true;
-      state.selectedEntity = action.payload;
+      state.selectedEntity = action.payload ?? null;
     },
     closeModal: (state) => {
       state.isModalVisible = false;

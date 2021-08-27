@@ -13,7 +13,7 @@ import TodoCard from "../../componets/TodoCard";
 import { Colors } from "../../theme/colors";
 import { backgroundDashboardImage } from "../../theme/images";
 
-const Index = () => {
+const Dashboard = () => {
   const todos = useAppSelector(state =>
     Object.values(state.todos.entities)
   );
@@ -36,7 +36,7 @@ const Index = () => {
         size="small"
         color={Colors.primaryBlack}
         placement="right"
-        onPress={() => dispatch(openModal(null))}
+        onPress={() => dispatch(openModal())}
       />
       <TodoModal />
     </ImageBackground>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Index;
+export default Dashboard;
